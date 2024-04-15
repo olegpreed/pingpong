@@ -1,14 +1,19 @@
 // Get references to the necessary elements
 const usernameField = document.getElementById('profile-username');
 const passwordField = document.getElementById('profile-password');
+const nicknameField = document.getElementById('profile-nickname');
 const editButton = document.getElementById('edit-button');
 const saveButton = document.getElementById('save-button');
+const cancelButton = document.getElementById('reset-button')
+
+const fieldsArray = [usernameField, passwordField, nicknameField];
 
 // Simulating fetching username from the backend
 const fetchDataFromBackend = () => {
     const data = {
 		username: 'example_username',
 		password: 'example_password',
+        nickname: 'example_nickname',
 	};
     return data;
 };
@@ -18,6 +23,7 @@ const setUserData = () => {
     const data = fetchDataFromBackend();
     usernameField.value = data.username;
 	passwordField.value = data.password;
+    nicknameField.value = data.nickname;
 };
 
 // Call the function to set initial username
@@ -26,16 +32,16 @@ setUserData();
 // Function to toggle between edit and view modes
 const toggleEditMode = () => {
     // Toggle the disabled attribute of the username field
-    usernameField.disabled = !usernameField.disabled;
 
     // Toggle the visibility of buttons
+    fieldsArray.forEach(function(element) {
+        element.disabled = !element.disabled;
+    });
+
     editButton.style.display = usernameField.disabled ? 'inline-block' : 'none';
     saveButton.style.display = usernameField.disabled ? 'none' : 'inline-block';
+    cancelButton.style.display = usernameField.disabled ? 'none' : 'inline-block';
 
-    // If entering edit mode, focus on the username field
-    if (!usernameField.disabled) {
-        usernameField.focus();
-    }
 };
 
 // Event listener for the edit button
@@ -50,3 +56,9 @@ saveButton.addEventListener('click', () => {
     // Toggle back to view mode
     toggleEditMode();
 });
+
+cancelButton.addEventListener('click', () => {
+    setUserData();
+    toggleEditMode();
+})
+
