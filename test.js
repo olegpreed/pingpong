@@ -10,20 +10,24 @@
 
 // doSmth().catch((err) => console.log(err.message))
 
-async function doSmth(){
-     try {console.log('1');
-      const res = await fetch('https://jsnplaceholder.typicode.com/todos/1');
-      console.log('2')
-      const info = await res.json();
-      console.log('3')
-      console.log(info)
-      console.log('4')}
-      catch (err)
-      {
-            console.log(err.message)
-      }
-}
-doSmth()
+// let a = 42; 
+// let b = {a}
+
+
+// async function doSmth(){
+//      try {console.log('1');
+//       const res = await fetch('https://jsnplaceholder.typicode.com/todos/1');
+//       console.log('2')
+//       const info = await res.json();
+//       console.log('3')
+//       console.log(info)
+//       console.log('4')}
+//       catch (err)
+//       {
+//             console.log(err.message)
+//       }
+// }
+// doSmth()
 // console.log('5')
 
 // const prom = new Promise((resolve, reject)=>{
