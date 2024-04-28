@@ -1,6 +1,7 @@
 import { signUpHandler } from "./scripts/login.js";
 import { signInHandler } from "./scripts/register.js";
 import { navHandler } from "./scripts/nav.js";
+import { editProfile } from "./scripts/profile.js";
 
 async function loadPage(src, path) {
   if (isLoggedIn) {
@@ -11,6 +12,7 @@ async function loadPage(src, path) {
     document.body.innerHTML = htmlNav;
     document.getElementById("content-wrapper").innerHTML = htmlMain;
     navHandler();
+	if (path === "/Profile") editProfile();
   } else {
     const response = await fetch(src);
     const html = await response.text();
@@ -63,5 +65,5 @@ window.addEventListener("popstate", () => {
   handleLocation();
 });
 
-const isLoggedIn = false; // Do async API magic to check if the user is logged in
+const isLoggedIn = true; // Do async API magic to check if the user is logged in
 handleLocation();
