@@ -1,16 +1,16 @@
-let i = 0;
+let user = {
+	name: "John",
+	age: 30,
+  
+	sayHi() {
+	  console.log( this.name ); // leads to an error
+	}
+  
+  };
+  
+  
+  let admin = user;
+  admin
+  user = null; // overwrite to make things obvious
 
-// const btn = document.getElementById("btn");
-// btn.addEventListener("click", function () {
-//   history.pushState({}, "", i++);
-// });
-
-// window.addEventListener("popstate", function () {
-// 	  this.alert(window.location.pathname);
-// });
-
-document.body.addEventListener("click", function (event) {
- 	const el = event.target.closest("[data-link]");
-	if (el)
-		console.log(el);
-});
+  admin.sayHi();

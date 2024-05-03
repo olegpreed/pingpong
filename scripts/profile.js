@@ -1,4 +1,48 @@
-export function editProfile()
+import { Component } from "./component.js";
+
+export class Profile extends Component {
+  constructor() {
+    super(document.getElementById("content-wrapper"));
+    this.render();
+  }
+  render() {
+    const html = `
+		<div><img src="assets/profile.png" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" alt="">
+		</div>
+		<form action="" method="" id="profile-form">
+			<div class="row mb-3 d-flex align align-items-center">
+				<label class="col-2" for="profile-username">Username</label>
+				<div class="col-4 p-0">
+					<div class="input-group">
+						<span class="input-group-text rounded-start-pill">@</span>
+						<input class="form-control rounded-end-pill" type="text" id="profile-username" name="username"
+							disabled>
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3 d-flex align align-items-center">
+				<label class="col-2" for="profile-nickname">Nickname</label>
+				<div class="col-4 p-0"><input class="form-control rounded-pill ps-4" type="text" id="profile-nickname"
+						name="nickname" disabled>
+				</div>
+			</div>
+			<div class="row mb-3 d-flex align align-items-center">
+				<label class="col-2" for="profile-password">Password</label>
+				<div class="col-4 p-0"><input class="form-control rounded-pill ps-4" type="password" id="profile-password"
+						name="password" disabled></div>
+			</div>
+			<button type="button" class="btn btn-outline-light rounded-pill" id="edit-button">Edit</button>
+			<button type="submit" class="btn btn-primary rounded-pill" style="display: none;" id="save-button">Save</button>
+			<button type="button" class="btn btn-secondary rounded-pill" style="display: none;"
+				id="reset-button">Cancel</button>
+		</form>
+		<br>
+		<button type="button" class="btn btn-outline-danger rounded-pill" id="logout-buttin">Log out</button>
+		`;
+    this.parentDiv.innerHTML = html;
+  }
+
+editProfile()
 {
 	// Get references to the necessary elements
 	const usernameField = document.getElementById('profile-username');
@@ -63,5 +107,6 @@ export function editProfile()
 		setUserData();
 		toggleEditMode();
 	})
-
 }
+}
+
