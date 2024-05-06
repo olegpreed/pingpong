@@ -1,9 +1,13 @@
 export class Component {
 	constructor(parentDiv) {
 		this.parentDiv = parentDiv;
+		this.view = "";
 	}
 
-	async render() {
+	render() {
 		this.parentDiv.innerHTML = this.view;
+	}
+
+	setupEventListeners() {
 	}
 }
