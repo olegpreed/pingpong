@@ -6,8 +6,6 @@ import {
 } from "./scripts/utils/router.js";
 import { Nav } from "./scripts/views/nav.js";
 
-setupDarkMode();
-
 async function checkLoginStatus() {
   return false; // do API magic to check if the user is logged in
 }
@@ -32,6 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const navbar = new Nav();
     replaceHistoryAndGoTo("/");
   }
+  setupDarkMode();
 });
 
 function setupNavigation() {
@@ -44,3 +43,7 @@ function setupNavigation() {
     }
   });
 }
+
+window.addEventListener("load", function () {
+  console.log("All resources have finished loading");
+});

@@ -29,6 +29,10 @@ export class Login extends Component {
 						</form>
 						<div class="mt-4 mb-2 mx-4 text-secondary">Don't have an account? <a href="/Register"
 								class="fw-semibold" data-link>Sign up</a></div>
+						<div class="form-check form-switch fs-4 d-flex justify-content-center">
+							<input class="form-check-input bg-body-secondary border-0" type="checkbox" role="switch" id="toggleMode"
+								data-bs-theme-value>
+						</div>
 					</div>
 				</div>
 			</div>

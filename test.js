@@ -8,6 +8,10 @@ const logoutButton = document.getElementById("logout-button");
 
 const fieldsArray = [usernameField, passwordField, nicknameField];
 
+import { setupDarkMode } from "./scripts/utils/darkmode.js";
+
+setupDarkMode();
+
 // Simulating fetching username from the backend
 const fetchDataFromBackend = () => {
   const data = {

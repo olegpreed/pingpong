@@ -13,7 +13,7 @@ export class Register extends Component {
 					<div class="card-header rounded-top-5 rounded-bottom-5">
 						<h1 class="mt-5 mb-3 mx-4 d-flex justify-content-between">Sign up<span>🏓</span></h1>
 					</div>
-					<div class="card-body">
+					<div class="card-body"">
 						<form id="registerForm" novalidate>
 							<div class="form-floating mb-2">
 								<input type="text" id="signup-username" class="form-control rounded-pill ps-4"
