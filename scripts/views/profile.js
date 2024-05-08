@@ -1,6 +1,6 @@
 import { Component } from "../library/component.js";
-import { replaceHistoryAndGoTo } from "../utils/router.js";
-import { isLoggedIn } from "../../index.js";
+import { Friends } from "./friends.js";
+import { makeLinkActive } from "../utils/other.js";
 
 export class Profile extends Component {
   constructor() {
@@ -41,99 +41,27 @@ export class Profile extends Component {
 				</div>
 			</div>
 		</div>
-		<ul class="nav nav-underline d-flex justify-content-center mt-2">
+		<ul class="nav nav-underline d-flex justify-content-center mt-2" id="profileMenu">
 			<li class="nav-item">
-				<a class="nav-link  active" aria-current="page" href="#">Friends</a>
+				<a href="/Profile" class="nav-link active" aria-current="page" data-link>Friends</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-body-tertiary" href="#">Match History</a>
+				<a href="/History" class="nav-link text-body-tertiary" data-link>Match History</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-body-tertiary" href="#">Settings</a>
+				<a href="/Settings" class="nav-link text-body-tertiary" data-link>Settings</a>
 			</li>
 		</ul>
-		<div class="bg-body-tertiary rounded-bottom-5 mt-3 mb-3 p-4">
+		<div class="bg-body-tertiary rounded-bottom-5 mt-3 mb-3 p-4" id="profile-wrapper">
 		</div>
 	`;
     this.render();
     this.setupEventListeners();
   }
 
-  setupEventListeners() {
-    // Get references to the necessary elements
-    const usernameField = document.getElementById("profile-username");
-    const passwordField = document.getElementById("profile-password");
-    const nicknameField = document.getElementById("profile-nickname");
-    const editButton = document.getElementById("edit-button");
-    const saveButton = document.getElementById("save-button");
-    const cancelButton = document.getElementById("reset-button");
-    const logoutButton = document.getElementById("logout-button");
-
-    const fieldsArray = [usernameField, passwordField, nicknameField];
-
-    // Simulating fetching username from the backend
-    const fetchDataFromBackend = () => {
-      const data = {
-        username: "example_username",
-        password: "example_password",
-        nickname: "example_nickname",
-      };
-      return data;
-    };
-
-    // Function to set the initial value of the username field
-    const setUserData = () => {
-      const data = fetchDataFromBackend();
-      usernameField.value = data.username;
-      passwordField.value = data.password;
-      nicknameField.value = data.nickname;
-    };
-
-    // Call the function to set initial username
-    setUserData();
-
-    // Function to toggle between edit and view modes
-    const toggleEditMode = () => {
-      // Toggle the disabled attribute of the username field
-
-      // Toggle the visibility of buttons
-      fieldsArray.forEach(function (element) {
-        element.disabled = !element.disabled;
-      });
-
-      editButton.style.display = usernameField.disabled
-        ? "inline-block"
-        : "none";
-      saveButton.style.display = usernameField.disabled
-        ? "none"
-        : "inline-block";
-      cancelButton.style.display = usernameField.disabled
-        ? "none"
-        : "inline-block";
-    };
-
-    // Event listener for the edit button
-    editButton.addEventListener("click", toggleEditMode);
-
-    // Event listener for the save button
-    saveButton.addEventListener("click", () => {
-      // Save the updated username (here you can add your logic to save the username)
-      // For demonstration, let's just log it to the console
-      console.log("Updated username:", usernameField.value);
-
-      // Toggle back to view mode
-      toggleEditMode();
-    });
-
-    cancelButton.addEventListener("click", () => {
-      setUserData();
-      toggleEditMode();
-    });
-
-    logoutButton.addEventListener("click", () => {
-      isLoggedIn.status = false;
-      document.querySelector("nav").remove();
-      replaceHistoryAndGoTo("/Login");
-    });
+  render() {
+    super.render();
+    new Friends();
+    makeLinkActive(document.getElementById("profileMenu"));
   }
 }
