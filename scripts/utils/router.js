@@ -14,7 +14,6 @@ const routes = [
 
 function router() {
   const url = window.location.pathname;
-//   console.log(url);
   const route = routes.find((route) => route.path === url);
   const view = new route.view();
 }

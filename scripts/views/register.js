@@ -2,6 +2,7 @@ import { Component } from "../library/component.js";
 import { isLoggedIn } from "../../index.js";
 import { replaceHistoryAndGoTo } from "../utils/router.js";
 import { Nav } from "./nav.js";
+import { setupDarkModeToggle } from "../utils/darkmode.js";
 
 export class Register extends Component {
   constructor() {
@@ -9,11 +10,11 @@ export class Register extends Component {
     this.view = `
 		<div id="registration-page">
 			<div class="vh-100 d-flex align-items-center justify-content-center">
-				<div class="card rounded-5">
+				<div class="card rounded-5" style="width: 324px">
 					<div class="card-header rounded-top-5 rounded-bottom-5">
 						<h1 class="mt-5 mb-3 mx-4 d-flex justify-content-between">Sign up<span>🏓</span></h1>
 					</div>
-					<div class="card-body"">
+					<div class="card-body">
 						<form id="registerForm" novalidate>
 							<div class="form-floating mb-2">
 								<input type="text" id="signup-username" class="form-control rounded-pill ps-4"
@@ -36,7 +37,11 @@ export class Register extends Component {
 							<button class="btn btn-outline-primary rounded-pill p-3 w-100 fw-bold">Sign in</button>
 						</form>
 						<div class="mt-4 mb-2 mx-4 text-secondary">Already have an account? <a href="/Login" class="fw-semibold"
-							data-link>Sign in</a></div>
+							data-link>Sign&nbsp;in</a></div>
+						<div class="form-check form-switch fs-4 d-flex justify-content-center">
+							<input class="form-check-input bg-body-secondary border-0" type="checkbox" role="switch" id="modeSwitch"
+							data-bs-theme-value>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -47,6 +52,8 @@ export class Register extends Component {
   }
 
   setupEventListeners() {
+    setupDarkModeToggle();
+    const cardBody = document.querySelector(".card-body");
     const registerForm = document.getElementById("registerForm");
     registerForm.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -79,7 +86,9 @@ export class Register extends Component {
       } else {
         passwordConfirmElm.classList.remove("is-invalid");
       }
-      if (!formIsValid) return;
+      if (!formIsValid) {
+        return;
+      }
 
       const requestBody = {
         username: username,

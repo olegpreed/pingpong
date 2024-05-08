@@ -1,4 +1,5 @@
 import { Component } from "../library/component.js";
+import { setupDarkModeToggle } from "../utils/darkmode.js";
 
 export class Nav extends Component {
   constructor() {
@@ -8,7 +9,7 @@ export class Nav extends Component {
 			<a href="" class="navbar-brand">Ping Pong</a>
 			<ul class="navbar-nav d-flex align-items-center">
 				<div class="form-check form-switch fs-4">
-					<input class="form-check-input bg-body-secondary border-0" type="checkbox" role="switch" id="toggleMode" data-bs-theme-value>
+					<input class="form-check-input bg-body-secondary border-0" type="checkbox" role="switch" id="modeSwitch" data-bs-theme-value>
 				</div>
 				<li class="nav-item"><a href="/" class="nav-link active" data-link>Home</a></li>
 				<li class="nav-item"><a href="/Tournament" class="nav-link" data-link>Tournament</a></li>
@@ -20,5 +21,10 @@ export class Nav extends Component {
 		</div>
 	`;
     this.render();
+	this.setupEventListeners();
+  }
+
+  setupEventListeners() {
+	setupDarkModeToggle();
   }
 }
