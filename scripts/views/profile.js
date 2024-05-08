@@ -6,7 +6,7 @@ export class Profile extends Component {
   constructor() {
     super(document.getElementById("content-wrapper"));
     this.view = `
-		<div class="bg-body-tertiary rounded-3 mb-4 d-flex flex-md-row flex-column">
+		<div class="bg-body-tertiary rounded-top-5  d-flex flex-md-row flex-column">
 			<div class="align-self-center">
 				<img src="assets/profile.png" class="rounded-circle my-3 m-md-3" width="200" height="200" alt="">
 			</div>
@@ -14,7 +14,7 @@ export class Profile extends Component {
 				<div
 					class="mb-2 d-flex flex-wrap flex-md-row flex-column align-items-md-end align-items-center justify-content-between">
 					<div class="fs-3">@pelmeshkaa</div>
-					<div class="d-flex gap-1 my-1">
+					<div class="d-flex gap-1 my-md-0 my-2">
 						<div class="fs-3 border border-1 rounded-3 d-flex align-items-center p-2 gap-2">
 							<div>Lvl</div>
 							<div>10</div>
@@ -41,36 +41,19 @@ export class Profile extends Component {
 				</div>
 			</div>
 		</div>
-		<form action="" method="" id="profile-form">
-			<div class="row mb-3 d-flex align align-items-center">
-				<label class="col-2" for="profile-username">Username</label>
-				<div class="col-4 p-0">
-					<div class="input-group">
-						<span class="input-group-text rounded-start-pill">@</span>
-						<input class="form-control rounded-end-pill" type="text" id="profile-username" name="username"
-							disabled>
-					</div>
-				</div>
-			</div>
-			<div class="row mb-3 d-flex align align-items-center">
-				<label class="col-2" for="profile-nickname">Nickname</label>
-				<div class="col-4 p-0"><input class="form-control rounded-pill ps-4" type="text" id="profile-nickname"
-						name="nickname" disabled>
-				</div>
-			</div>
-			<div class="row mb-3 d-flex align align-items-center">
-				<label class="col-2" for="profile-password">Password</label>
-				<div class="col-4 p-0"><input class="form-control rounded-pill ps-4" type="password"
-						id="profile-password" name="password" disabled></div>
-			</div>
-			<button type="button" class="btn btn-outline-light rounded-pill" id="edit-button">Edit</button>
-			<button type="submit" class="btn btn-primary rounded-pill" style="display: none;"
-				id="save-button">Save</button>
-			<button type="button" class="btn btn-secondary rounded-pill" style="display: none;"
-				id="reset-button">Cancel</button>
-		</form>
-		<br>
-		<button type="button" class="btn btn-outline-danger rounded-pill" id="logout-button">Log out</button>
+		<ul class="nav nav-underline d-flex justify-content-center mt-2">
+			<li class="nav-item">
+				<a class="nav-link  active" aria-current="page" href="#">Friends</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-body-tertiary" href="#">Match History</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-body-tertiary" href="#">Settings</a>
+			</li>
+		</ul>
+		<div class="bg-body-tertiary rounded-bottom-5 mt-3 mb-3 p-4">
+		</div>
 	`;
     this.render();
     this.setupEventListeners();
